@@ -18,6 +18,11 @@
               <md-radio v-model="answer" value="f">False</md-radio>
               <br>
             </div>
+            <div v-if="question.type === 'i'">
+              <md-field>
+                  <md-input v-model="answer"></md-input>
+                </md-field>
+            </div>
 
             <div v-if="question.type === 'mc'">
               <div v-for="(mcanswer,index) in question.answers">
@@ -32,6 +37,7 @@
                 <br>
               </div>
             </div>
+            
             <div v-if="question.type === 'mci'">
               <div v-for="(mcanswer,index) in question.answers">
                 <md-field>

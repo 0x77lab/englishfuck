@@ -32,7 +32,6 @@ import low from "lowdb";
 import LocalStorage from "lowdb/adapters/LocalStorage";
 const adapter = new LocalStorage("englishquiz");
 const db = low(adapter);
-
 db.defaults({ lastresult: "" }).write();
 window.db = db;
 export default {
@@ -77,13 +76,18 @@ export default {
     handleResults() {
       console.log("handle results");
       this.questions.forEach((a, index) => {
-        window.scomplete = {a: a.answer, aa: this.answers[index]};
-        window.scomplete.a.answer["__ob__"] = null;
-        window.scomplete.a.answer["__proto__"] = null;
-        window.scomplete.aa.answer["__ob__"] = null;
-        window.scomplete.aa.answer["__proto__"] = null;
-        console.log(this.answers[index]);
-        if (window.scomplete.a == window.scomplete.aa){ 
+        let checkQuestion = (A, B) => {
+          A.map((A)=>{
+            A = A;
+          });
+          B.map((B)=>{
+            B = B;
+          });
+          if(A == B){
+            return true;
+          }
+        }
+        if (a.answer == this.answers[index]){ 
           this.correct++;
         }
       });
